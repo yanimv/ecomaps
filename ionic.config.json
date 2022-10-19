@@ -1,0 +1,7 @@
+{
+  "name": "ecomaps",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
