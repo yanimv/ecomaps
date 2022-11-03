@@ -20,16 +20,24 @@ const routes: Routes = [
     loadChildren: () => import('./denuncias/denuncias.module').then( m => m.DenunciasPageModule)
   },
   {
-    path: 'novedades',
-    loadChildren: () => import('./novedades/novedades.module').then( m => m.NovedadesPageModule)
-  },
-  {
     path: 'ajustes',
     loadChildren: () => import('./ajustes/ajustes.module').then( m => m.AjustesPageModule)
   },
   {
     path: 'sugerencias',
     loadChildren: () => import('./sugerencias/sugerencias.module').then( m => m.SugerenciasPageModule)
+  },
+  {
+    path: 'recicladoras',
+    loadChildren: () => import('./recicladoras/recicladoras.module').then( m => m.RecicladorasPageModule)
+  },
+  {
+    path: 'agregar-rec',
+    loadChildren: () => import('./agregar-rec/agregar-rec.module').then( m => m.AgregarRecPageModule)
+  },
+  {
+    path: 'inicio',
+    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
   },
 ];
 

@@ -11,7 +11,7 @@
       <ion-list>
 
         <ion-menu-toggle>
-          <ion-item button routerLink="home" routerLinkActive="seleccionado">
+          <ion-item button routerLink="inicio" routerLinkActive="seleccionado">
             <ion-icon name="home-outline" slot="start"></ion-icon>
             <ion-label>Inicio</ion-label>
           </ion-item>
@@ -19,22 +19,22 @@
 
         <ion-menu-toggle>
           <ion-item button routerLink="galeria" routerLinkActive="seleccionado">
-            <ion-icon name="albums-outline" slot="start"></ion-icon>
+            <ion-icon name="images-outline" slot="start"></ion-icon>
             <ion-label>Ideas para reutilizar</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle>
           <ion-item button routerLink="denuncias" routerLinkActive="seleccionado">
-            <ion-icon name="alert-circle-outline" slot="start"></ion-icon>
+            <ion-icon name="call-outline" slot="start"></ion-icon>
             <ion-label>Realizar denuncias</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle>
-          <ion-item button routerLink="novedades" routerLinkActive="seleccionado">
-            <ion-icon name="newspaper-outline" slot="start"></ion-icon>
-            <ion-label>Novedades</ion-label>
+          <ion-item button routerLink="agregar-rec" routerLinkActive="seleccionado">
+            <ion-icon name="enter-outline" slot="start"></ion-icon>
+            <ion-label>Añadir recicladora</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
@@ -48,7 +48,14 @@
         <ion-menu-toggle>
           <ion-item button routerLink="sugerencias" routerLinkActive="seleccionado">
             <ion-icon name="chatbox-ellipses-outline" slot="start"></ion-icon>
-            <ion-label>Enviar sugerencias</ion-label>
+            <ion-label>Enviar comentarios</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item button routerLink="recicladoras" routerLinkActive="seleccionado">
+            <ion-icon name="chatbox-ellipses-outline" slot="start"></ion-icon>
+            <ion-label>Vista Recicladoras</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
@@ -56,6 +63,6 @@
     </ion-content>
 
   </ion-menu>
-
+ 
   <ion-router-outlet id="contenido"></ion-router-outlet>
 </ion-app>

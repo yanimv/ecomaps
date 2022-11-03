@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { NovedadesPageRoutingModule } from './novedades-routing.module';
+import { AgregarRecPageRoutingModule } from './agregar-rec-routing.module';
 
-import { NovedadesPage } from './novedades.page';
+import { AgregarRecPage } from './agregar-rec.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NovedadesPageRoutingModule
+    AgregarRecPageRoutingModule
   ],
-  declarations: [NovedadesPage]
+  declarations: [AgregarRecPage]
 })
-export class NovedadesPageModule {}
+export class AgregarRecPageModule {}
