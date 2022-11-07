@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Formulario } from '../interfaces/formulario.interface';
+import { FormularioService } from '../servicios/formulario.service';
 
 @Component({
   selector: 'app-agregar-rec',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgregarRecPage implements OnInit {
 
-  constructor() { }
+  public form: FormGroup = new FormGroup({
+    nombreCtrl: new FormControl<string>(null,Validators.required),
+    ciudadCtrl: new FormControl<string>(null,Validators.required),
+    barrioCtrl: new FormControl<string>(null,Validators.required),
+    calleCtrl: new FormControl<string>(null,Validators.required),
+    gpsCtrl: new FormControl<string>(null,Validators.required),
+    telefonoCtrl: new FormControl<number>(null,Validators.required),
+    pagaCtrl: new FormControl<string>(null,Validators.required),
+  });
 
-  ngOnInit() {
-  }
+  constructor(
+    private servicioFormulario: FormularioService
+  ) { }
+
+  ngOnInit() {  }
+
 
 }

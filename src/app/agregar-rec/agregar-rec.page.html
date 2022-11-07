@@ -7,43 +7,46 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true" class="ion-padding" style="text-align: justify;">
 
-  <ion-list>
-    <ion-item>
-      <ion-label>ID:</ion-label>
-      <ion-input inputmode="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Nombre:</ion-label>
-      <ion-input inputmode="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Ciudad:</ion-label>
-      <ion-input inputmode="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Barrio:</ion-label>
-      <ion-input inputmode="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Calle:</ion-label>
-      <ion-input inputmode="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Enlace GPS:</ion-label>
-      <ion-input inputmode=""></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Teléfono:</ion-label>
-      <ion-input inputmode="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Paga:</ion-label>
-      <ion-input inputmode="text"></ion-input>
-    </ion-item>
-  </ion-list>
-  
-    <ion-button>ENVIAR</ion-button>
-    <ion-button>CANCELAR</ion-button>
+  Para agregar una nueva recicladora, por favor complete el siguiente formulario.
+
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Nombre:</ion-label>
+        <ion-input inputmode="text" formControlName="nombreCtrl"></ion-input>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Ciudad:</ion-label>
+        <ion-input inputmode="text" formControlName="ciudadCtrl"></ion-input>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Barrio:</ion-label>
+        <ion-input inputmode="text" formControlName="barrioCtrl"></ion-input>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Calle:</ion-label>
+        <ion-input inputmode="text" formControlName="calleCtrl"></ion-input>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Enlace GPS:</ion-label>
+        <ion-input inputmode="text" formControlName="gpsCtrl"></ion-input>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Teléfono:</ion-label>
+        <ion-input inputmode="number" formControlName="telefonoCtrl"></ion-input>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>¿Ofrece remuneración?:</ion-label>
+        <ion-select interface="popover" slot="end" formControlName="pagaCtrl">
+          <ion-select-option value="si">Sí</ion-select-option>
+          <ion-select-option value="no">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    
+      <ion-button>ENVIAR</ion-button>
+      <ion-button>CANCELAR</ion-button>
+  </form>
 </ion-content>

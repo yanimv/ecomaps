@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonRefresher, ToastController } from '@ionic/angular';
+import { Material } from '../interfaces/material.interface';
+import { MaterialService } from '../servicios/material.service';
 
 @Component({
   selector: 'app-inicio',
@@ -7,9 +10,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioPage implements OnInit {
 
-  constructor() { }
+  @ViewChild(IonRefresher) refresher!: IonRefresher;
 
-  ngOnInit() {
+  materialesSeleccionados: {} = {};
+  mostrarBoton: boolean = false;
+
+  public listaMateriales: Material[] = [];
+  public cargandoMateriales: boolean = false;
+
+  constructor(
+    private servicioMateriales: MaterialService,
+    private servicioToast: ToastController
+  ) { }
+
+  ngOnInit(  ) {
+    this.cargarMateriales();
   }
 
+  public cargarMateriales(){
+    this.cargandoMateriales = true;
+    this.servicioMateriales.get().subscribe({
+      next: (material) =>{
+        this.listaMateriales = material;
+        this.cargandoMateriales = false;
+      },
+      error: (e) => {
+        console.error("Error al consultar Materiales", e);
+        this.cargandoMateriales = false;
+        this.servicioToast.create({
+          header: 'Error al cargar Materiales',
+          message: e.message,
+          duration: 3000,
+          position: 'bottom',
+          color: 'danger'
+        }).then(toast => toast.present());
+      }
+    });
+  }
+
+  public mostrar(){
+    console.log(this.obtenerIdMateriales());
+  }
+
+  public seleccionMaterial(){
+    this.mostrarBoton = this.obtenerIdMateriales().length !== 0
+  }
+    
+  private obtenerIdMateriales(): number[]{
+    return Object.keys(this.materialesSeleccionados)
+    .filter(key => this.materialesSeleccionados[key] === true)
+    .map(value => Number(value));
+  }
 }

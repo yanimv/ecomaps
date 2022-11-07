@@ -12,65 +12,17 @@
 <ion-content> 
 
   <div id="container">
-
-    <h5>SELECCIONE EL MATERIAL QUE QUIERA RECICLAR</h5>
-
-    <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Papel</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Cartón</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Plástico</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Pilas o baterías</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Hule</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Latitas</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Aluminio</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Cobre</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Bronce</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Neumáticos</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Hierro</ion-label>
-    </ion-item>
-
-    <ion-button>BUSCAR</ion-button>
-
+    <strong>Seleccione el material que quiera reciclar</strong>
+    <ion-list lines="none">
+      <ion-item *ngFor="let material of listaMateriales ">
+        <ion-checkbox slot="start"
+        [(ngModel)]="materialesSeleccionados[material.idmaterial]"
+        (ngModelChange)="seleccionMaterial()">
+      </ion-checkbox>
+        <ion-label>{{ material.material }}</ion-label>
+      </ion-item>
+    </ion-list>
+   <ion-button *ngIf="mostrarBoton" (click)="mostrar()">Mostrar</ion-button>
   </div>
+
 </ion-content>

@@ -18,4 +18,8 @@ export class RecicladoraService {
     return this.http.get<Recicladora[]>(this.url);
   }
 
+  public cargarPorMaterial(idmaterial: number[]){
+    return this.http.get<Recicladora[]>(this.url);
+  }
+
 }
