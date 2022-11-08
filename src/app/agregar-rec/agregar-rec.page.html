@@ -16,26 +16,32 @@
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Nombre:</ion-label>
         <ion-input inputmode="text" formControlName="nombreCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.nombreCtrl.touched">Ingrese el nombre de la recicladora.</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Ciudad:</ion-label>
         <ion-input inputmode="text" formControlName="ciudadCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.ciudadCtrl.touched">Ingrese la ciudad en la que está ubicada la recicladora.</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Barrio:</ion-label>
         <ion-input inputmode="text" formControlName="barrioCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.barrioCtrl.touched">Ingrese el barrio en donde queda ubicada la recicladora.</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Calle:</ion-label>
         <ion-input inputmode="text" formControlName="calleCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.calleCtrl.touched">Ingrese la calle en donde queda ubicada la recicladora. En caso de no saberlo escriba "No se sabe".</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Enlace GPS:</ion-label>
         <ion-input inputmode="text" formControlName="gpsCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.gpsCtrl.touched">Ingrese el enlace de ubicación de Google Maps.  En caso de no poseer uno escriba "No posee".</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Teléfono:</ion-label>
         <ion-input inputmode="number" formControlName="telefonoCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.telefonoCtrl.touched">Ingrese un número de teléfono. En caso de no poseer uno escriba "1111".</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>¿Ofrece remuneración?:</ion-label>
@@ -43,10 +49,11 @@
           <ion-select-option value="si">Sí</ion-select-option>
           <ion-select-option value="no">No</ion-select-option>
         </ion-select>
+        <ion-note slot="error" *ngIf="form.controls.pagaCtrl.touched">Seleccione una opción.</ion-note>
       </ion-item>
     </ion-list>
     
-      <ion-button>ENVIAR</ion-button>
+      <ion-button (click)="guardar()">ENVIAR</ion-button>
       <ion-button>CANCELAR</ion-button>
   </form>
 </ion-content>
