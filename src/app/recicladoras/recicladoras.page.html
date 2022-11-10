@@ -12,12 +12,18 @@
 
   <ion-list>
     <ion-item *ngFor="let recicladoras of listaRecicladoras ">
-      <ion-note color="secondary" slot="start">{{ recicladoras.idrecicladora }}</ion-note>
       <ion-label>
         <h1>{{ recicladoras.nombre }}</h1>
         <p>{{ recicladoras.ciudad }}, {{ recicladoras.barrio }}.</p>
         <p>{{ recicladoras.calle }}.</p>
+        <div class="boton-ionic">
+          <ion-button href="{{recicladoras.gps}}">
+            <ion-icon name="arrow-redo-outline" slot="end"></ion-icon>
+            Ver en Google Maps
+          </ion-button>
+        </div>
       </ion-label>
+           
     </ion-item>
   </ion-list>
 

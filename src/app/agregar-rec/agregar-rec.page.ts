@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ViewWillEnter } from '@ionic/angular';
 import { Formulario } from '../interfaces/formulario.interface';
 import { FormularioService } from '../servicios/formulario.service';
 
@@ -9,7 +9,7 @@ import { FormularioService } from '../servicios/formulario.service';
   templateUrl: './agregar-rec.page.html',
   styleUrls: ['./agregar-rec.page.scss'],
 })
-export class AgregarRecPage implements OnInit {
+export class AgregarRecPage implements OnInit, ViewWillEnter {
 
   public form: FormGroup = new FormGroup({
     nombreCtrl: new FormControl<string>(null,Validators.required),
@@ -25,6 +25,10 @@ export class AgregarRecPage implements OnInit {
     private servicioFormulario: FormularioService,
     private servicioToast: ToastController
   ) { }
+
+  ionViewWillEnter(): void {
+    this.form.reset();
+  }
 
   ngOnInit() {  }
 
@@ -50,8 +54,8 @@ export class AgregarRecPage implements OnInit {
       next: ()=>{
         this.servicioToast.create({
           header: 'Éxito',
-          message: 'Se registró correctamente la recicladora.',
-          duration: 3000,
+          message: 'Se registró correctamente la recicladora. <p> Ahora los administradores se encargarán de verificar los datos.',
+          duration: 10000,
           color: 'success'
         }).then(t=> {t.present()});
       },
