@@ -19,6 +19,7 @@ export class AgregarRecPage implements OnInit, ViewWillEnter {
     gpsCtrl: new FormControl<string>(null,Validators.required),
     telefonoCtrl: new FormControl<number>(null,Validators.required),
     pagaCtrl: new FormControl<string>(null,Validators.required),
+    materialCtrl: new FormControl<string>(null,Validators.required)
   });
 
   constructor(
@@ -49,6 +50,7 @@ export class AgregarRecPage implements OnInit, ViewWillEnter {
       gps: this.form.controls.gpsCtrl.value,
       telefono: this.form.controls.telefonoCtrl.value,
       paga: this.form.controls.pagaCtrl.value,
+      material: this.form.controls.materialCtrl.value
     }
     this.servicioFormulario.post(formulario).subscribe({
       next: ()=>{

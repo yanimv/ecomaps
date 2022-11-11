@@ -7,4 +7,5 @@ export interface Formulario{
     gps: string | null;
     telefono: string | null;
     paga: string | null;
+    material: string | null;
 }
