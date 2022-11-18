@@ -27,11 +27,11 @@
   text-decoration: none;
 }
 
-#container titulo{
-  text-align: center;
-  size: 200px;
+ion-content{
+  --ion-background-color:#8ae2cc;
 }
 
-ion-content{
-  --ion-background-color:#69bb7b;
+#center{
+  text-align:center;
+  padding-top: 80px;
 }

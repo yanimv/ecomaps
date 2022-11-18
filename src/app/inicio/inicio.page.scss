@@ -6,6 +6,7 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    
   }
   
   #container strong {
@@ -27,11 +28,18 @@
   }
 ion-checkbox {
     --size: 20px;
-    --background-checked:#69BB7B;
+    --background-checked:#8ae2cc;
   }
   
-  ion-checkbox::part(container) {
+ion-checkbox::part(container) {
     border-radius: 6px;
-    border: 2px solid #69bb7b;
-  }
-  
+    border: 2px solid #8ae2cc;
+}
+ion-button{
+  --background: #8ae2cc;
+  --color:  black;
+}
+/*ion-content {
+  --background:#69bb7b;
+  --color: #fff;
+}*/

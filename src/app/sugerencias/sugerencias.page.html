@@ -7,6 +7,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true" class="ion-padding" style="text-align: justify;">
+
+    <form [formGroup]="form">
+      <ion-list>
+        <ion-item fill="outline" class="item-espaciado">
+          <ion-label position="stacked">Déjenos una sugerencia :)</ion-label>
+          <ion-textarea inputmode="text" formControlName="comentarioCtrl" autoGrow="true"></ion-textarea>
+          <ion-note slot="error" *ngIf="form.controls.comentarioCtrl.touched">No es posible enviar un campo vacío.</ion-note>
+        </ion-item>
+      </ion-list>
+
+      <div id="center">
+        <ion-button (click)="guardar()">ENVIAR</ion-button>
+        <ion-button type="reset">CANCELAR</ion-button>
+      </div>
+    </form>
 
 </ion-content>

@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Recicladora } from '../interfaces/recicladora.interface';
+import { Material } from '../interfaces/material.interface';
+import { Recicladoras } from '../interfaces/recicladoras.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,20 @@ export class RecicladoraService {
     private http: HttpClient
   ) { }
 
-  public get(): Observable<Recicladora[]>{
-    return this.http.get<Recicladora[]>(this.url);
+  public get(): Observable<Recicladoras[]>{
+    return this.http.get<Recicladoras[]>(this.url);
+  }
+
+  public getMaterialesPorRecicladora(idrecicladora: number): Observable<Material[]>{
+    return this.http.get<Material[]>(this.url+'/'+idrecicladora+'material');
   }
 
   public cargarPorMaterial(idmaterial: number[]){
-    return this.http.get<Recicladora[]>(this.url);
+    let parametros: HttpParams = new HttpParams();
+    idmaterial.forEach(id => {
+      parametros = parametros.append('idmaterial', id.toString());
+    })
+    return this.http.get<Recicladoras[]>(this.url, {params: parametros});
   }
 
 }

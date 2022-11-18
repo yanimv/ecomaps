@@ -55,7 +55,7 @@ export class AgregarRecPage implements OnInit, ViewWillEnter {
     this.servicioFormulario.post(formulario).subscribe({
       next: ()=>{
         this.servicioToast.create({
-          header: 'Éxito',
+          header: '',
           message: 'Se registró correctamente la recicladora. <p> Ahora los administradores se encargarán de verificar los datos.',
           duration: 10000,
           color: 'success'

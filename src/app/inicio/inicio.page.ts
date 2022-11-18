@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonRefresher, ToastController } from '@ionic/angular';
 import { Material } from '../interfaces/material.interface';
 import { MaterialService } from '../servicios/material.service';
@@ -20,7 +21,8 @@ export class InicioPage implements OnInit {
 
   constructor(
     private servicioMateriales: MaterialService,
-    private servicioToast: ToastController
+    private servicioToast: ToastController,
+    private router: Router
   ) { }
 
   ngOnInit(  ) {
@@ -50,7 +52,13 @@ export class InicioPage implements OnInit {
 
   public mostrar(){
     console.log(this.obtenerIdMateriales());
+    this.router.navigate(['recicladoras'], {queryParams: {idmaterial: this.obtenerIdMateriales()}});
   }
+
+  public resetear(){    
+    this.materialesSeleccionados = {};
+    this.seleccionMaterial();
+  };
 
   public seleccionMaterial(){
     this.mostrarBoton = this.obtenerIdMateriales().length !== 0

@@ -1,4 +1,4 @@
-export interface Recicladora{
+export interface VistaRecicladora{
     idrecicladora: number | null;
     nombre: string | null;
     ciudad: string | null;
@@ -7,4 +7,6 @@ export interface Recicladora{
     gps: string | null;
     telefono: string | null;
     paga: string | null;
+    idmaterial: number | null;
+    material: string | null;
 }
