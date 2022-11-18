@@ -1,3 +1,28 @@
 .boton-ionic{
   text-align: right;
 }
+ion-button{
+  --background: #8ae2cc;
+  --color:  black;
+}
+.ion-button{
+  --background: #8ae2cc;
+  --color:  black;
+}
+/*ion-list{
+  background: #69bb7b;
+}
+ion-item {
+  --background:#69bb7b;
+  --color: #fff;
+}
+ion-content{
+  --background: #69bb7b;
+}*/
+.item-espaciado{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+#inicio{
+  padding-right: 10px;
+}

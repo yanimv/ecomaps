@@ -17,6 +17,8 @@ export class RecicladorasPage implements OnInit {
   public cargandoRecicladoras: boolean = false;
   private idmaterial: number[] = [];
 
+  private iconPaga: boolean = false;
+
   constructor(
     private servicioRecicladoras:RecicladoraService,
     private servicioToast: ToastController,
@@ -39,7 +41,7 @@ export class RecicladorasPage implements OnInit {
           this.cargandoRecicladoras =false;
         },
         error: (e)=>{
-          console.log('ERror al cargar recicladoras', e);
+          console.log('Error al cargar recicladoras', e);
           this.cargandoRecicladoras = false;
         }
       })
@@ -62,6 +64,10 @@ export class RecicladorasPage implements OnInit {
         }
       });
     }
+    
+  }
+
+  public mostrarIconPaga(){
     
   }
 
