@@ -3,13 +3,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastController, ViewWillEnter } from '@ionic/angular';
 import { Formulario } from '../interfaces/formulario.interface';
 import { FormularioService } from '../servicios/formulario.service';
+import { ViewChild } from '@angular/core';
+import { IonRefresher } from '@ionic/angular';
 
 @Component({
   selector: 'app-agregar-rec',
   templateUrl: './agregar-rec.page.html',
   styleUrls: ['./agregar-rec.page.scss'],
 })
-export class AgregarRecPage implements OnInit, ViewWillEnter {
+export class AgregarRecPage implements OnInit {
+
+  @ViewChild(IonRefresher) refresher!: IonRefresher;
 
   public form: FormGroup = new FormGroup({
     nombreCtrl: new FormControl<string>(null,Validators.required),
@@ -22,6 +26,8 @@ export class AgregarRecPage implements OnInit, ViewWillEnter {
     materialCtrl: new FormControl<string>(null,Validators.required)
   });
 
+  public modalVisible: boolean = false
+
   constructor(
     private servicioFormulario: FormularioService,
     private servicioToast: ToastController
@@ -33,44 +39,8 @@ export class AgregarRecPage implements OnInit, ViewWillEnter {
 
   ngOnInit() {  }
 
-  guardar(){
-    this.form.markAllAsTouched();
-    if(this.form.valid){
-      this.registrar();
-    }
-  };
-
-  private registrar(){
-    const formulario: Formulario = {
-      idformulario: null,
-      nombre: this.form.controls.nombreCtrl.value,
-      ciudad: this.form.controls.ciudadCtrl.value,
-      barrio: this.form.controls.barrioCtrl.value,
-      calle: this.form.controls.calleCtrl.value,
-      gps: this.form.controls.gpsCtrl.value,
-      telefono: this.form.controls.telefonoCtrl.value,
-      paga: this.form.controls.pagaCtrl.value,
-      material: this.form.controls.materialCtrl.value
-    }
-    this.servicioFormulario.post(formulario).subscribe({
-      next: ()=>{
-        this.servicioToast.create({
-          header: '',
-          message: 'Se registró correctamente la recicladora. <p> Ahora los administradores se encargarán de verificar los datos.',
-          duration: 10000,
-          color: 'success'
-        }).then(t=> {t.present()});
-      },
-      error: (e) => {
-        console.error('Error al registrar recicladora', e);
-        this.servicioToast.create({
-          header: 'Error al registrar',
-          message: e.error,
-          duration: 3500,
-          color: 'danger'
-        }).then(t => t.present());
-      }
-    })
+  public nuevo(){
+    this.modalVisible = true;
   }
 
 }

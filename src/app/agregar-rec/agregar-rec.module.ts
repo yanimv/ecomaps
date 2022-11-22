@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AgregarRecPageRoutingModule } from './agregar-rec-routing.module';
 
 import { AgregarRecPage } from './agregar-rec.page';
+import { FormularioComponent } from './formulario/formulario.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { AgregarRecPage } from './agregar-rec.page';
     AgregarRecPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [AgregarRecPage]
+  declarations: [AgregarRecPage, FormularioComponent]
 })
 export class AgregarRecPageModule {}

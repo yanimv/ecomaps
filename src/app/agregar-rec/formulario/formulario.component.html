@@ -1,0 +1,58 @@
+<ion-content [fullscreen]="true" class="ion-padding" style="text-align: justify;">
+
+  Para agregar una nueva recicladora, por favor complete el siguiente formulario.
+
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Nombre:</ion-label>
+        <ion-input inputmode="text" formControlName="nombreCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.nombreCtrl.touched">Ingrese el nombre de la recicladora.</ion-note>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Ciudad:</ion-label>
+        <ion-input inputmode="text" formControlName="ciudadCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.ciudadCtrl.touched">Ingrese la ciudad en la que está ubicada la recicladora.</ion-note>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Barrio:</ion-label>
+        <ion-input inputmode="text" formControlName="barrioCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.barrioCtrl.touched">Ingrese el barrio en donde queda ubicada la recicladora.</ion-note>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Calle:</ion-label>
+        <ion-input inputmode="text" formControlName="calleCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.calleCtrl.touched">Ingrese la calle en donde queda ubicada la recicladora. En caso de no saberlo escriba "No se sabe".</ion-note>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Enlace GPS:</ion-label>
+        <ion-input inputmode="text" formControlName="gpsCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.gpsCtrl.touched">Ingrese el enlace de ubicación de Google Maps.  En caso de no poseer uno escriba "No posee".</ion-note>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Teléfono:</ion-label>
+        <ion-input inputmode="number" formControlName="telefonoCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.telefonoCtrl.touched">Ingrese un número de teléfono. En caso de no poseer uno escriba "1111".</ion-note>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>¿Ofrece remuneración?:</ion-label>
+        <ion-select interface="popover" slot="end" formControlName="pagaCtrl">
+          <ion-select-option value="si">Sí</ion-select-option>
+          <ion-select-option value="no">No</ion-select-option>
+        </ion-select>
+        <ion-note slot="error" *ngIf="form.controls.pagaCtrl.touched">Seleccione una opción.</ion-note>
+      </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label position="stacked">Escriba qué materiales recicla:</ion-label>
+        <ion-textarea inputmode="text" formControlName="materialCtrl" autoGrow="true"></ion-textarea>
+        <ion-note slot="error" *ngIf="form.controls.materialCtrl.touched">Debe ingresar al menos un material.</ion-note>
+      </ion-item>
+    </ion-list>
+    
+    <div id="center">
+      <ion-button (click)="guardar()">ENVIAR</ion-button>
+      <ion-button type="reset" >CANCELAR</ion-button>
+    </div>
+
+  </form>
+</ion-content>
