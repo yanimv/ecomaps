@@ -11,8 +11,10 @@
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Ciudad:</ion-label>
-        <ion-input inputmode="text" formControlName="ciudadCtrl"></ion-input>
-        <ion-note slot="error" *ngIf="form.controls.ciudadCtrl.touched">Ingrese la ciudad en la que está ubicada la recicladora.</ion-note>
+        <ion-select interface="popover" slot="end" formControlName="ciudadCtrl">
+          <ion-select-option value="si">Coronel Oviedo</ion-select-option>
+        </ion-select>
+        <ion-note slot="error" *ngIf="form.controls.ciudadCtrl.touched">Seleccione una opción.</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Barrio:</ion-label>

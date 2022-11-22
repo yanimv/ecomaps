@@ -9,6 +9,32 @@
 
 <ion-content [fullscreen]="true" class="ion-padding" style="text-align: justify;">
 
+  <p>Estas son las Recicladoras con las que cuenta ECOMAPS.</p>
+
+  <ion-list>
+
+    <ion-item *ngFor="let recicladora of listaRecicladoras" class="item-espaciado">
+      <ion-label>
+        <h1>{{ recicladora.nombre_rec }}</h1>
+        <p>{{ recicladora.ciudad }}. {{ recicladora.barrio }}</p>
+        <p>{{ recicladora.calle }}</p>
+        <p>¿Ofrece remuneración?: {{ recicladora.paga }}</p>
+        <div class="boton-ionic">
+          <ion-button href="{{ recicladora.gps }}">
+            <ion-icon name="arrow-redo-outline" slot="end"></ion-icon>
+            Ver en Google Maps
+          </ion-button>
+        </div>
+      </ion-label>
+           
+    </ion-item>
+  
+  </ion-list>
+
+  <p>Si conoce de otras recicladoras en<br>
+     la ciudad puede enviar sus datos<br>
+     a través del formulario.</p>
+
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button (click)="nuevo()">
       <ion-icon name="add"></ion-icon>
@@ -36,6 +62,5 @@
 
     </ng-template>
   </ion-modal>
-
   
 </ion-content>
