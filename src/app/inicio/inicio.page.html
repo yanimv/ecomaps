@@ -3,14 +3,13 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      ECOMAPS
-    </ion-title>
+    <ion-title>ECOMAPS</ion-title>
+    <ion-progress-bar *ngIf="cargandoMateriales" type="indeterminate" color="secondary"></ion-progress-bar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content> 
-
+ 
   <div id="container">
     <strong>Seleccione el material que quiera reciclar</strong>
     <ion-list lines="none">

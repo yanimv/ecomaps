@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonRefresher, ToastController } from '@ionic/angular';
+import { Material } from '../interfaces/material.interface';
 import { Recicladoras } from '../interfaces/recicladoras.interface';
+import { MaterialService } from '../servicios/material.service';
 import { RecicladoraService } from '../servicios/recicladora.service';
 
 @Component({
@@ -16,11 +18,11 @@ export class RecicladorasPage implements OnInit {
   public listaRecicladoras: Recicladoras[] = [];
   public cargandoRecicladoras: boolean = false;
   private idmaterial: number[] = [];
-
-  private iconPaga: boolean = false;
+  public materialesPorRec: Map<number, Material[]> = new Map();
 
   constructor(
-    private servicioRecicladoras:RecicladoraService,
+    private servicioRecicladoras: RecicladoraService,
+    private servicioMateriales: MaterialService,
     private servicioToast: ToastController,
     private activatedRoute: ActivatedRoute
   ) { }
@@ -30,6 +32,7 @@ export class RecicladorasPage implements OnInit {
     .filter(idm => !Number.isNaN(Number(idm)))
     .map(idm => Number(idm));
     this.cargarRecicladoras();
+    this.cargarMateriales();
   }
 
   public cargarRecicladoras(){
@@ -67,8 +70,17 @@ export class RecicladorasPage implements OnInit {
     
   }
 
-  public mostrarIconPaga(){
-    
+  private cargarMateriales(){
+    this.idmaterial.forEach(id => {
+      this.servicioRecicladoras.getMaterialesPorRecicladora(id).subscribe({
+        next: (materiales) => {
+          this.materialesPorRec.set(id, materiales);
+        },
+        error:(e) => {
+          console.error('Error al cargar materiales', e);
+        }
+      })
+    })
   }
 
 }

@@ -1,4 +1,4 @@
-<body onLoad="loadApp()">
+<!---<body onLoad="loadApp()">-->
   <ion-app>
     <ion-menu contentId="contenido">
 
@@ -19,6 +19,13 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle>
+            <ion-item button routerLink="agregar-rec" routerLinkActive="seleccionado">
+              <ion-icon name="list-outline" slot="start"></ion-icon>
+              <ion-label>Lista de Recicladoras</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle>
             <ion-item button routerLink="galeria" routerLinkActive="seleccionado">
               <ion-icon name="images-outline" slot="start"></ion-icon>
               <ion-label>Ideas para reutilizar</ion-label>
@@ -29,13 +36,6 @@
             <ion-item button routerLink="denuncias" routerLinkActive="seleccionado">
               <ion-icon name="call-outline" slot="start"></ion-icon>
               <ion-label>Aspectos legales</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-menu-toggle>
-            <ion-item button routerLink="agregar-rec" routerLinkActive="seleccionado">
-              <ion-icon name="list-outline" slot="start"></ion-icon>
-              <ion-label>Lista de Recicladoras</ion-label>
             </ion-item>
           </ion-menu-toggle>
 
@@ -68,4 +68,4 @@
   
     <ion-router-outlet id="contenido"></ion-router-outlet>
   </ion-app>
-</body>
+<!--</body>-->

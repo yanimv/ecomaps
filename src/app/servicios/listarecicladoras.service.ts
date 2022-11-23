@@ -18,4 +18,16 @@ export class ListarecicladorasService {
     return this.http.get<Recicladoras[]>(this.url);
   }
 
+  public post(recicladora: Recicladoras): Observable<any>{
+    return this.http.post(this.url, recicladora, {responseType: 'text'});
+  }
+
+  public put(recicladora: Recicladoras): Observable<any>{
+    return this. http.put(this.url, recicladora, {responseType: 'text'});
+  }
+
+  public delete(recicladora: Recicladoras): Observable<any>{
+    return this.http.delete(`${this.url}/${recicladora.idrecicladora}`, {responseType: 'text'});
+  }
+
 }

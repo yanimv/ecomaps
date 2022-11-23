@@ -8,4 +8,5 @@ export interface Recicladoras{
     barrio: string | null;
     calle: string | null;
     gps: string | null;
+    estado: string | null;
 }
