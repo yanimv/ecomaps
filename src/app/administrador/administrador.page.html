@@ -1,9 +1,70 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>administrador</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Administrador</ion-title>
+    <ion-progress-bar *ngIf="" type="indeterminate" color="secondary"></ion-progress-bar>
+    <ion-button routerLink="/inicio" fill="clear" id="inicio" slot="end">
+      <ion-icon name="home-outline" slot="icon-only"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button (click)="nuevo()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-refresher slot="fixed" (ionRefresh)="cargarRecicladoras()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let recicladora of listaRecicladoras">
+
+      <ion-item button (click)="editar(recicladora)">
+        <ion-note color="secondary" slot="start">{{ recicladora.idrecicladora }}</ion-note>
+        <ion-label>
+          <h1>{{ recicladora.nombre_rec }}</h1>
+          <p>{{ recicladora.ciudad }}</p>
+          <p>{{ recicladora.barrio }}</p>
+          <p>{{ recicladora.calle }}</p>
+          <p>{{ recicladora.telefono_rec }}</p>
+          <p>¿Ofrece remuneración?: {{ recicladora.paga }}</p>
+        </ion-label>
+        
+      </ion-item>
+
+      <ion-item-options>
+        <ion-item-option (click)="confirmarEliminacion(recicladora)" color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-modal [isOpen]="modalVisible" (didDismiss)="modalVisible = false" (didPresent)="cargarDatosEditar()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{ modoFormulario }} Libro</ion-title>
+          <ion-buttons slot="end" (click)="modalVisible = false">
+            <ion-button>Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <div style="padding: 10px;">
+          <app-formulario-libro (recargar)="cargarRecicladoras()"></app-formulario-libro>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
 </ion-content>
