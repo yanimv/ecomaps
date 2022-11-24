@@ -11,7 +11,7 @@ import { FormularioComponent } from './formulario/formulario.component';
 
 @NgModule({
   imports: [
-    CommonModule,
+    CommonModule, 
     FormsModule,
     IonicModule,
     AgregarRecPageRoutingModule,

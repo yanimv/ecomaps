@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlertController, IonRefresher, ToastController } from '@ionic/angular';
 import { Recicladoras } from '../interfaces/recicladoras.interface';
-import { RecicladoraService } from '../servicios/recicladora.service';
+import { AdministrarService } from '../servicios/administrar.service';
+import { RecicladorasComponent } from './recicladoras/recicladoras.component';
 
 @Component({
   selector: 'app-administrador',
@@ -11,6 +12,7 @@ import { RecicladoraService } from '../servicios/recicladora.service';
 export class AdministradorPage implements OnInit {
 
   @ViewChild(IonRefresher) refresher!: IonRefresher;
+  @ViewChild(RecicladorasComponent) formularioRecicladora: RecicladorasComponent;
 
   public listaRecicladoras: Recicladoras[] = [];
   public cargandoRecicladoras: boolean = false;
@@ -20,7 +22,7 @@ export class AdministradorPage implements OnInit {
   public modoFormulario: 'Registrar' | 'Editar' = 'Registrar';
 
   constructor(
-    private servicioRecicladoras:RecicladoraService,
+    private servicioRecicladoras: AdministrarService,
     private servicioToast: ToastController,
     private servicioAlert: AlertController
   ) { }
@@ -62,49 +64,53 @@ export class AdministradorPage implements OnInit {
     this.modalVisible = true;
   }
 
-  //CAMBIAR
-  /*
   public cargarDatosEditar(){
     if(this.modoFormulario === 'Editar'){
-      this.formularioLibro.modo = this.modoFormulario;
-      this.formularioLibro.form.controls.idCtrl.setValue(this.libroSeleccionado.id);
-    this.formularioLibro.form.controls.tituloCtrl.setValue(this.libroSeleccionado.titulo);
-    this.formularioLibro.form.controls.idautorCtrl.setValue(this.libroSeleccionado.idautor);
-    this.formularioLibro.form.controls.paginasCtrl.setValue(this.libroSeleccionado.paginas);
+      this.formularioRecicladora.modo = this.modoFormulario;
+      this.formularioRecicladora.form.controls.idrecicladoraCtrl.setValue(this.recicladoraSeleccionada.idrecicladora);
+      this.formularioRecicladora.form.controls.nombreCtrl.setValue(this.recicladoraSeleccionada.nombre_rec);
+      this.formularioRecicladora.form.controls.telefonoCtrl.setValue(this.recicladoraSeleccionada.telefono_rec);
+      this.formularioRecicladora.form.controls.pagaCtrl.setValue(this.recicladoraSeleccionada.paga);
+      this.formularioRecicladora.form.controls.ciudadCtrl.setValue(this.recicladoraSeleccionada.ciudad);
+      this.formularioRecicladora.form.controls.barrioCtrl.setValue(this.recicladoraSeleccionada.barrio);
+      this.formularioRecicladora.form.controls.calleCtrl.setValue(this.recicladoraSeleccionada.calle);
+      this.formularioRecicladora.form.controls.gpsCtrl.setValue(this.recicladoraSeleccionada.gps);
+      this.formularioRecicladora.form.controls.estadoCtrl.setValue(this.recicladoraSeleccionada.estado);
     }
   }
 
-  public confirmarEliminacion(libro: Libro){
+  
+  public confirmarEliminacion(recicladora: Recicladoras){
     this.servicioAlert.create({
       header: "Confirmar eliminación",
-      subHeader: '¿Realmente desea eliminar el libro?',
-      message: `${libro.id} - ${libro.titulo} (${libro.autor})`,
+      subHeader: '¿Realmente desea eliminar la recicladora?',
+      message: `${recicladora.idrecicladora} - ${recicladora.nombre_rec} (${recicladora.ciudad} ${recicladora.barrio})`,
       buttons: [
         {
           text: 'Cancelar'
         },
         {
           text: 'Eliminar',
-          handler: () => this.eliminar(libro)
+          handler: () => this.eliminar(recicladora)
         }
       ]
     }).then(a => a.present());
   }
 
-  private eliminar(libro: Libro){
-    this.servicioLibros.delete(libro).subscribe({
+  private eliminar(recicladora: Recicladoras){
+    this.servicioRecicladoras.delete(recicladora).subscribe({
       next: () => {
-        this.cargarLibros();
+        this.cargarRecicladoras();
          this.servicioToast.create({
           header: 'Éxito.',
-          message: 'El libro de elimino correctamente.',
+          message: 'La recicladora se eliminó correctamente.',
           duration: 2000,
           position: 'bottom',
           color: 'success'
          }).then(t => t.present());
       },
       error: (e) => {
-        console.error('Error al eliminar libro', e);
+        console.error('Error al eliminar recicladora', e);
         this.servicioToast.create({
           header: 'Error al eliminar.',
           message: e.message,
@@ -114,6 +120,6 @@ export class AdministradorPage implements OnInit {
         }).then(toast => toast.present());
       }
     })
-  }*/
+  }
 
 }

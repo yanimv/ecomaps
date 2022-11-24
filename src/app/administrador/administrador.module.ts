@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
 import { AdministradorPageRoutingModule } from './administrador-routing.module';
 
 import { AdministradorPage } from './administrador.page';
+import { RecicladorasComponent } from './recicladoras/recicladoras.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdministradorPageRoutingModule
+    AdministradorPageRoutingModule,
+    ReactiveFormsModule
   ],
-  declarations: [AdministradorPage]
+  declarations: [AdministradorPage, RecicladorasComponent]
 })
 export class AdministradorPageModule {}
