@@ -51,7 +51,6 @@ export class InicioPage implements OnInit {
   }
 
   public mostrar(){
-    console.log(this.obtenerIdMateriales());
     this.router.navigate(['recicladoras'], {queryParams: {idmaterial: this.obtenerIdMateriales()}});
   }
 

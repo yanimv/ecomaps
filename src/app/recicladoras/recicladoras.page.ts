@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IonRefresher, ToastController } from '@ionic/angular';
+import { IonRefresher, ToastController, ViewWillEnter } from '@ionic/angular';
 import { Material } from '../interfaces/material.interface';
 import { Recicladoras } from '../interfaces/recicladoras.interface';
 import { MaterialService } from '../servicios/material.service';
@@ -11,14 +11,15 @@ import { RecicladoraService } from '../servicios/recicladora.service';
   templateUrl: './recicladoras.page.html',
   styleUrls: ['./recicladoras.page.scss'],
 })
-export class RecicladorasPage implements OnInit {
+export class RecicladorasPage implements OnInit, ViewWillEnter {
 
   @ViewChild(IonRefresher) refresher!: IonRefresher;
 
   public listaRecicladoras: Recicladoras[] = [];
   public cargandoRecicladoras: boolean = false;
   private idmaterial: number[] = [];
-  public materialesPorRec: Map<number, Material[]> = new Map();
+  //public materialesPorRec: Map<number, Material[]> = new Map();
+  
 
   constructor(
     private servicioRecicladoras: RecicladoraService,
@@ -27,13 +28,14 @@ export class RecicladorasPage implements OnInit {
     private activatedRoute: ActivatedRoute
   ) { }
 
-  ngOnInit() {
+  ionViewWillEnter(): void {
     this.idmaterial=this.activatedRoute.snapshot.queryParamMap.getAll("idmaterial")
     .filter(idm => !Number.isNaN(Number(idm)))
     .map(idm => Number(idm));
     this.cargarRecicladoras();
-    this.cargarMateriales();
   }
+
+  ngOnInit() {}
 
   public cargarRecicladoras(){
     this.cargandoRecicladoras = true;
@@ -41,6 +43,16 @@ export class RecicladorasPage implements OnInit {
       this.servicioRecicladoras.cargarPorMaterial(this.idmaterial).subscribe({
         next: (recicladoras) => {
           this.listaRecicladoras = recicladoras;
+          this.listaRecicladoras.forEach(reci => {
+            this.servicioRecicladoras.getMaterialesPorRecicladora(reci.idrecicladora).subscribe({
+              next: (materiales) =>{
+                reci.materiales = materiales.filter(m => this.idmaterial.includes(m.idmaterial))
+              },
+              error: (e) => {
+                console.error("Error al cargar materiales", e);
+              }
+            })
+          })
           this.cargandoRecicladoras =false;
         },
         error: (e)=>{
@@ -70,10 +82,11 @@ export class RecicladorasPage implements OnInit {
     
   }
 
-  private cargarMateriales(){
+  /*private cargarMateriales(){
     this.idmaterial.forEach(id => {
       this.servicioRecicladoras.getMaterialesPorRecicladora(id).subscribe({
         next: (materiales) => {
+          console.log("materiales", materiales)
           this.materialesPorRec.set(id, materiales);
         },
         error:(e) => {
@@ -81,6 +94,6 @@ export class RecicladorasPage implements OnInit {
         }
       })
     })
-  }
+  }*/
 
 }

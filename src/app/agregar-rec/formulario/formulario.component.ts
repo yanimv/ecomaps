@@ -19,7 +19,8 @@ export class FormularioComponent implements OnInit, ViewWillEnter {
     gpsCtrl: new FormControl<string>(null,Validators.required),
     telefonoCtrl: new FormControl<number>(null,Validators.required),
     pagaCtrl: new FormControl<string>(null,Validators.required),
-    materialCtrl: new FormControl<string>(null,Validators.required)
+    materialCtrl: new FormControl<string>(null,Validators.required),
+  
   });
 
   constructor(

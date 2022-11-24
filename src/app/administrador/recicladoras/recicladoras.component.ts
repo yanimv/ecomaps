@@ -30,6 +30,7 @@ export class RecicladorasComponent implements OnInit {
     calleCtrl: new FormControl<string>(null, [Validators.required]),
     gpsCtrl: new FormControl<string>(null, [Validators.required]),
     estadoCtrl: new FormControl<string>(null, [Validators.required]),
+    materialesCtrl: new FormControl<string>(null, [Validators.required])
   });
 
   constructor(
@@ -79,7 +80,8 @@ export class RecicladorasComponent implements OnInit {
       barrio: this.form.controls.barrioCtrl.value,
       calle: this.form.controls.calleCtrl.value,
       gps: this.form.controls.gpsCtrl.value,
-      estado: this.form.controls.estadoCtrl.value
+      estado: this.form.controls.estadoCtrl.value,
+      materiales: this.form.controls.estadoCtrl.value
     }
     this.servicioRecicladora.post(recicladora).subscribe({
       next: () => {
@@ -113,7 +115,8 @@ export class RecicladorasComponent implements OnInit {
       barrio: this.form.controls.barrioCtrl.value,
       calle: this.form.controls.calleCtrl.value,
       gps: this.form.controls.gpsCtrl.value,
-      estado: this.form.controls.estadoCtrl.value
+      estado: this.form.controls.estadoCtrl.value,
+      materiales: this.form.controls.estadoCtrl.value
     }
     this.servicioRecicladora.put(recicladora).subscribe({
       next: () => {

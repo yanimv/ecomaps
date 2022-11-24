@@ -46,6 +46,14 @@
         <ion-input inputmode="text" placeholder="Ingresar..." formControlName="estadoCtrl"></ion-input>
         <ion-note slot="error" *ngIf="form.controls.estadoCtrl.touched">Escriba "Pendiente" o "Visible".</ion-note>
       </ion-item>
+      <ion-item fill="outline" class="item-espaciado">
+        <ion-label>Materiales:</ion-label>
+        <ion-select formControlName="materialesCtrl" placeholder="Seleccione..." [multiple]="true">
+          <ion-select-option *ngFor="let material of listaMateriales" [value]="materiales.materiales">{{Material.material}}</ion-select-option>
+        </ion-select>
+        <!--<ion-input inputmode="text" placeholder="Ingresar..." formControlName="materialesCtrl"></ion-input>-->
+        <ion-note slot="error" *ngIf="form.controls.materialesCtrl.touched">Seleccion un material.</ion-note>
+      </ion-item>
  
     <ion-button expand="full" shape="round" (click)="guardar()">
       <ion-icon name="save" slot="start"></ion-icon>

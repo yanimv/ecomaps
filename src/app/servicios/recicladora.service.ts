@@ -20,15 +20,15 @@ export class RecicladoraService {
   }
 
   public getMaterialesPorRecicladora(idrecicladora: number): Observable<Material[]>{
-    return this.http.get<Material[]>(this.url+'/'+idrecicladora+'/materiales');
+    return this.http.get<Material[]>(this.url + '/' + idrecicladora + '/materiales');
   }
 
-  public cargarPorMaterial(idmaterial: number[]){
+  public cargarPorMaterial(idmaterial: number[]): Observable<Recicladoras[]>{
     let parametros: HttpParams = new HttpParams();
     idmaterial.forEach(id => {
       parametros = parametros.append('idmaterial', id.toString());
     })
-    return this.http.get<Recicladoras[]>(this.url, {params: parametros});
+    return this.http.get<Recicladoras[]>(this.url, { params: parametros });
   }
 
 }

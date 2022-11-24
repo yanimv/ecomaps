@@ -21,7 +21,14 @@
         <p>{{ recicladora.ciudad }}. {{ recicladora.barrio }}</p>
         <p>{{ recicladora.calle }}</p>
         <p>¿Ofrece remuneración?: {{ recicladora.paga }}</p>
-        <p>Materiales: </p>
+        <p>
+          <ion-text color="tertiary">
+            <ion-badge color="secondary" *ngFor="let material of recicladora.materiales">
+              {{ material.material }}
+            </ion-badge>
+
+          </ion-text>
+        </p>
         <div class="boton-ionic">
           <ion-button href="{{ recicladora.gps }}">
             <ion-icon name="arrow-redo-outline" slot="end"></ion-icon>
@@ -29,6 +36,12 @@
           </ion-button>
         </div>
       </ion-label>
+
+      <!--<ion-item *ngFor="let material of materialesPorRec">
+      <ion-label>
+        <p>material.material</p>
+      </ion-label>
+    </ion-item>-->
            
     </ion-item>
   
