@@ -12,15 +12,21 @@
 </ion-header>
 
 <ion-content>
-  <form>
-    <ion-item>
-      <ion-label position="floating">Nro. Documento</ion-label>
-      <ion-input inputmode="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
+  <form [formGroup]="form">
+        <ion-item class="item-espaciado">
+          <ion-label position="floating">Nro. Documento</ion-label>
+          <ion-input inputmode="number" formControlName="ci"  [clearInput]="true"></ion-input>
+          <ion-note slot="error" *ngIf="form.get('ci').invalid && form.get('ci').dirty">Ingrese el nro. de documento.</ion-note>
+        </ion-item>
+        <ion-item class="item-espaciado">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"  [clearInput]="true"></ion-input>
+          <ion-note slot="error" *ngIf="form.get('password').invalid && form.get('password').dirty">Ingrese la contraseña.</ion-note>
+        </ion-item>
+        <ion-button expand="full" shape="round" (click)="iniciarSesion()">
+          <ion-icon name="save" slot="start"></ion-icon>
+          Login
+        </ion-button>   
   </form>
   
 </ion-content>
