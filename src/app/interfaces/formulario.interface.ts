@@ -1,4 +1,4 @@
-export interface Formulario{
+/*export interface Formulario{
     idformulario: number | null;
     nombre: string | null;
     ciudad: string | null;
@@ -8,4 +8,4 @@ export interface Formulario{
     telefono: string | null;
     paga: string | null;
     material: string | null;
-}
+}*/

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastController, ViewWillEnter } from '@ionic/angular';
-import { Formulario } from 'src/app/interfaces/formulario.interface';
+import { Recicladoras } from 'src/app/interfaces/recicladoras.interface';
 import { FormularioService } from 'src/app/servicios/formulario.service';
 
 @Component({
@@ -19,8 +19,7 @@ export class FormularioComponent implements OnInit, ViewWillEnter {
     gpsCtrl: new FormControl<string>(null,Validators.required),
     telefonoCtrl: new FormControl<number>(null,Validators.required),
     pagaCtrl: new FormControl<string>(null,Validators.required),
-    materialCtrl: new FormControl<string>(null,Validators.required),
-  
+    //materialCtrl: new FormControl<string>(null,Validators.required),
   });
 
   constructor(
@@ -42,16 +41,17 @@ export class FormularioComponent implements OnInit, ViewWillEnter {
   };
 
   private registrar(){
-    const formulario: Formulario = {
-      idformulario: null,
-      nombre: this.form.controls.nombreCtrl.value,
+    const formulario: Recicladoras = {
+      idrecicladora: null,
+      nombre_rec: this.form.controls.nombreCtrl.value,
       ciudad: this.form.controls.ciudadCtrl.value,
       barrio: this.form.controls.barrioCtrl.value,
       calle: this.form.controls.calleCtrl.value,
       gps: this.form.controls.gpsCtrl.value,
-      telefono: this.form.controls.telefonoCtrl.value,
+      telefono_rec: this.form.controls.telefonoCtrl.value,
       paga: this.form.controls.pagaCtrl.value,
-      material: this.form.controls.materialCtrl.value
+      estado: null,
+      materiales: null
     }
     this.servicioFormulario.post(formulario).subscribe({
       next: ()=>{
