@@ -72,7 +72,7 @@ export class RecicladorasComponent implements OnInit {
 
   private registrar(){
     const recicladora: Recicladoras = {
-      idrecicladora: this.form.controls.idrecicladoraCtrl.value,
+      idrecicladora: null,
       nombre_rec: this.form.controls.nombreCtrl.value,
       telefono_rec: this.form.controls.telefonoCtrl.value,
       paga: this.form.controls.pagaCtrl.value,

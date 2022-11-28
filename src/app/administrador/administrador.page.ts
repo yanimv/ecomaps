@@ -79,6 +79,7 @@ export class AdministradorPage implements OnInit {
       this.formularioRecicladora.form.controls.calleCtrl.setValue(this.recicladoraSeleccionada.calle);
       this.formularioRecicladora.form.controls.gpsCtrl.setValue(this.recicladoraSeleccionada.gps);
       this.formularioRecicladora.form.controls.estadoCtrl.setValue(this.recicladoraSeleccionada.estado);
+      this.formularioRecicladora.form.controls.materialesCtrl.setValue(this.recicladoraSeleccionada.materiales);
     }
   }
 
