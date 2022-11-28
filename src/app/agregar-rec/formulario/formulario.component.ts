@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastController, ViewWillEnter } from '@ionic/angular';
 import { Recicladoras } from 'src/app/interfaces/recicladoras.interface';
-import { FormularioService } from 'src/app/servicios/formulario.service';
+import { Material } from 'src/app/interfaces/material.interface';
+import { ListarecicladorasService } from 'src/app/servicios/listarecicladoras.service';
+import { MaterialService } from 'src/app/servicios/material.service';
 
 @Component({
   selector: 'app-formulario',
@@ -11,19 +13,22 @@ import { FormularioService } from 'src/app/servicios/formulario.service';
 })
 export class FormularioComponent implements OnInit, ViewWillEnter {
 
+  public listaMateriales: Material[] = [];
+
   public form: FormGroup = new FormGroup({
-    nombreCtrl: new FormControl<string>(null,Validators.required),
-    ciudadCtrl: new FormControl<string>(null,Validators.required),
-    barrioCtrl: new FormControl<string>(null,Validators.required),
-    calleCtrl: new FormControl<string>(null,Validators.required),
-    gpsCtrl: new FormControl<string>(null,Validators.required),
-    telefonoCtrl: new FormControl<number>(null,Validators.required),
-    pagaCtrl: new FormControl<string>(null,Validators.required),
-    //materialCtrl: new FormControl<string>(null,Validators.required),
+    nombreCtrl: new FormControl<string>(null,[Validators.required]),
+    ciudadCtrl: new FormControl<string>(null,[Validators.required]),
+    barrioCtrl: new FormControl<string>(null,[Validators.required]),
+    calleCtrl: new FormControl<string>(null,[Validators.required]),
+    gpsCtrl: new FormControl<string>(null,[Validators.required]),
+    telefonoCtrl: new FormControl<number>(null,[Validators.required]),
+    pagaCtrl: new FormControl<string>(null,[Validators.required]),
+    materialesCtrl: new FormControl<string>(null,[Validators.required]),
   });
 
   constructor(
-    private servicioFormulario: FormularioService,
+    private servicioRecicladora: ListarecicladorasService,
+    private servicioMaterial: MaterialService,
     private servicioToast: ToastController
   ) { }
 
@@ -31,7 +36,25 @@ export class FormularioComponent implements OnInit, ViewWillEnter {
     this.form.reset();
   }
 
-  ngOnInit() {  }
+  ngOnInit() {
+    this.cargarMaterial();
+  }
+
+  private cargarMaterial(){
+    this.servicioMaterial.get().subscribe({
+      next: (materiales) => {
+        this.listaMateriales = materiales;
+      },
+      error: (e) => {
+        console.log('Error al cargar Materiales', e);
+        this.servicioToast.create({
+          header: 'Error al cargar Materiales',
+          message: e.error,
+          color: 'danger'
+        })
+      }
+    });
+  }
 
   guardar(){
     this.form.markAllAsTouched();
@@ -53,7 +76,7 @@ export class FormularioComponent implements OnInit, ViewWillEnter {
       estado: null,
       materiales: null
     }
-    this.servicioFormulario.post(formulario).subscribe({
+    this.servicioRecicladora.post(formulario).subscribe({
       next: ()=>{
         this.servicioToast.create({
           header: '',

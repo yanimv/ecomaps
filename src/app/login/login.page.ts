@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ToastController } from '@ionic/angular';
+import { ToastController, IonRefresher } from '@ionic/angular';
 import { SesionService } from '../servicios/sesion.service';
 import { Credenciales } from './../interfaces/credenciales.interface'
 import { Router } from '@angular/router';
@@ -12,6 +12,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
+  @ViewChild(IonRefresher) refresher!: IonRefresher;
 
   public form: FormGroup = new FormGroup({
     ci: new FormControl<number | null>(null, Validators.required),
@@ -34,10 +36,15 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/administrador'])
       }
     }
+    this.recargarLogin();
+  }
+
+  public recargarLogin(){
+    this.refresher?.complete();
   }
 
   public iniciarSesion(){
-    this.actualizarValidación();
+    this.actualizarValidación();    
     if(this.form.valid){
       const cred: Credenciales = {
         ci: this.form.get('ci')?.value,

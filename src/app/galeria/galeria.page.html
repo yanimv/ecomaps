@@ -3,10 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Cómo reutilizar</ion-title>
+    <ion-title>Ideas para reutilizar</ion-title>
+    <ion-button routerLink="/inicio" fill="clear" id="inicio" slot="end">
+      <ion-icon name="home-outline" slot="icon-only"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="recargarGaleria()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
 
 </ion-content>
