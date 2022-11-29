@@ -6,7 +6,6 @@ ion-item.seleccionado ion-icon{
     color: var(--ion-color-primary);
 }
 
-  /* Optional CSS, this is added for the flashing that happens when toggling between themes */
-  ion-item {
-    --transition: none;
-  }
+ion-item {
+  --transition: none;
+}

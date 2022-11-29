@@ -2,27 +2,37 @@
   text-align: right;
 }
 ion-button{
-  --background: #8ae2cc;
+  --background: whitesmoke;
   --color:  black;
 }
-.ion-button{
-  --background: #8ae2cc;
-  --color:  black;
+#inicio{
+  --background:none;
 }
-/*ion-list{
-  background: #69bb7b;
-}
-ion-item {
-  --background:#69bb7b;
-  --color: #fff;
+
+ion-list{
+  background: #72d1b9; //#50bcdd #8ae2cc #72d1b9
 }
 ion-content{
-  --background: #69bb7b;
-}*/
-.item-espaciado{
+  --background: #72d1b9;
+}
+ion-item {
+  --background: white;
+  --color: #fff;
+  --width:min-content;
+  padding: 10px 10px 10px 10px;
+}
+item-espaciado{
   margin-top: 15px;
   margin-bottom: 15px;
 }
-#inicio{
-  padding-right: 10px;
+h1{
+  color:#867beb;
+  font-size: 20px;
+  font-weight: bold;
+  white-space: normal;
 }
+p{
+  color: black;
+  white-space: normal;
+}
+

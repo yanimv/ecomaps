@@ -9,6 +9,7 @@
 }
 
 #container strong {
+  color: rgb(41, 39, 39);
   font-size: 50px;
   line-height: 60px;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -18,7 +19,7 @@
   font-size: 16px;
   line-height: 22px;
 
-  color: #8c8c8c;
+  color: #797979;
 
   margin: 0;
 }
@@ -28,7 +29,7 @@
 }
 
 ion-content{
-  --ion-background-color:#8ae2cc;
+  --ion-background-color:#72d1b9;  //#72d1b9
 }
 
 #center{

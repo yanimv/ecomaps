@@ -5,32 +5,29 @@
     </ion-buttons>
     <ion-title>Recicladoras</ion-title>
     <ion-progress-bar *ngIf="cargandoRecicladoras" type="indeterminate" color="secondary"></ion-progress-bar>
-    <ion-button routerLink="/inicio" fill="clear" id="inicio" slot="end">
+    <ion-button routerLink="/inicio" fill="clear" id="inicio" color="primary" slot="end">
       <ion-icon name="home-outline" slot="icon-only"></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
   <ion-refresher slot="fixed" (ionRefresh)="cargarRecicladoras()">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-
   <ion-list>
-
     <ion-item *ngFor="let recicladora of listaRecicladoras" class="item-espaciado">
       <ion-label>
         <h1>{{ recicladora.nombre_rec }}</h1>
-        <p>{{ recicladora.ciudad }}. {{ recicladora.barrio }}</p>
-        <p>{{ recicladora.calle }}</p>
-        <p>¿Ofrece remuneración?: {{ recicladora.paga }}</p>
+        <p>{{ recicladora.ciudad }}. {{ recicladora.barrio }}.</p>
+        <p>{{ recicladora.calle }}.</p>
+        <p>¿Ofrece remuneración?: {{ recicladora.paga }}.</p>
         <p>
-          <ion-text color="tertiary">
-            <ion-badge color="secondary" *ngFor="let material of recicladora.materiales">
-              {{ material.material }}
+          <ion-text color="tertiary" *ngFor="let material of recicladora.materiales">
+            <p></p>
+            <ion-badge color="tertiary">
+            {{ material.material }}
             </ion-badge>
-
           </ion-text>
         </p>
         <div class="boton-ionic">
@@ -39,14 +36,7 @@
             Google Maps
           </ion-button>
         </div>
-      </ion-label>
-
-      <!--<ion-item *ngFor="let material of materialesPorRec">
-      <ion-label>
-        <p>material.material</p>
-      </ion-label>
-    </ion-item>-->
-           
+      </ion-label>           
     </ion-item>
   
   </ion-list>
