@@ -1,11 +1,5 @@
 #container {
     text-align: center;
-  
-    position:relative;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
   }
   
   #container strong {
@@ -25,17 +19,20 @@
   #container a {
     text-decoration: none;
   }
-ion-button{
-    --background: #8ae2cc;
+  ion-button{
+    --background: whitesmoke; ////#5f77ed  #8ae2cc
     --color:  black;
+  }
+.boton-ionic{
+  text-align: right;
 }
 .item-espaciado{
   margin-top: 15px;
   margin-bottom: 15px;
 }
-.item-material{
-  font-size: 40px;
-}
 #center{
   text-align: center;
+}
+#inicio{
+  --background:none;
 }

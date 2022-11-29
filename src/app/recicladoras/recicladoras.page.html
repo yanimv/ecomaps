@@ -19,7 +19,9 @@
     <ion-item *ngFor="let recicladora of listaRecicladoras" class="item-espaciado">
       <ion-label>
         <h1>{{ recicladora.nombre_rec }}</h1>
-        <p>{{ recicladora.ciudad }}. {{ recicladora.barrio }}.</p>
+        <div class="ciudad">
+          <p>{{ recicladora.ciudad }}. {{ recicladora.barrio }}.</p>
+        </div>
         <p>{{ recicladora.calle }}.</p>
         <p>¿Ofrece remuneración?: {{ recicladora.paga }}.</p>
         <p>

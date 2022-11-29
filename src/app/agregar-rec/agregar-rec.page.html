@@ -3,9 +3,9 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Recicladoras</ion-title>
+    <ion-title>Lista Recicladoras</ion-title>
     <ion-progress-bar *ngIf="cargandoRecicladoras" type="indeterminate" color="secondary"></ion-progress-bar>
-    <ion-button routerLink="/inicio" fill="clear" id="inicio" slot="end">
+    <ion-button routerLink="/inicio" fill="clear" id="inicio" color="primary" slot="end">
       <ion-icon name="home-outline" slot="icon-only"></ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -23,14 +23,17 @@
 
     <ion-item *ngFor="let recicladora of listaRecicladoras" class="item-espaciado">
       <ion-label>
+        <ion-badge color="tertiary" slot="start">
+          <ion-icon name="bookmark-outline"></ion-icon>
+        </ion-badge>
         <h1>{{ recicladora.nombre_rec }}</h1>
         <p>{{ recicladora.ciudad }}. {{ recicladora.barrio }}</p>
         <p>{{ recicladora.calle }}</p>
         <p>¿Ofrece remuneración?: {{ recicladora.paga }}</p>
         <div class="boton-ionic">
-          <ion-button href="{{ recicladora.gps }}">
+          <ion-button href="{{ recicladora.gps }}" color="tertiary">
             <ion-icon name="arrow-redo-outline" slot="end"></ion-icon>
-            Ver en Google Maps
+            Google Maps
           </ion-button>
         </div>
       </ion-label>
