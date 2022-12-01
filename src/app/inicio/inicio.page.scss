@@ -10,7 +10,7 @@
   }
   
   #container p {
-    font-size: 16px;
+    font-size: 30px;
     line-height: 22px;
   
     color: #8c8c8c;
@@ -20,10 +20,12 @@
   
   #container a {
     text-decoration: none;
+    text-decoration:line-through;
+    font-size:x-large;
   }
 ion-checkbox {
     --size: 20px;
-    --background-checked:#8ae2cc;
+    --background-checked:orange;
   }
   
 ion-checkbox::part(container) {

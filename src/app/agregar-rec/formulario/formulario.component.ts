@@ -23,7 +23,7 @@ export class FormularioComponent implements OnInit, ViewWillEnter {
     gpsCtrl: new FormControl<string>(null,[Validators.required]),
     telefonoCtrl: new FormControl<number>(null,[Validators.required]),
     pagaCtrl: new FormControl<string>(null,[Validators.required]),
-    materialesCtrl: new FormControl<string>(null,[Validators.required]),
+    materialesCtrl: new FormControl<number[]>([], [Validators.required]),
   });
 
   constructor(
@@ -64,6 +64,11 @@ export class FormularioComponent implements OnInit, ViewWillEnter {
   };
 
   private registrar(){
+    const materialesEnvio: Material[] = [];
+    this.form.controls.materialesCtrl.value.forEach(id => {
+      materialesEnvio.push({idmaterial: id, material: null});
+    })
+
     const formulario: Recicladoras = {
       idrecicladora: null,
       nombre_rec: this.form.controls.nombreCtrl.value,
@@ -74,7 +79,7 @@ export class FormularioComponent implements OnInit, ViewWillEnter {
       telefono_rec: this.form.controls.telefonoCtrl.value,
       paga: this.form.controls.pagaCtrl.value,
       estado: null,
-      materiales: null
+      materiales: materialesEnvio
     }
     this.servicioRecicladora.post(formulario).subscribe({
       next: ()=>{
