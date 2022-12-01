@@ -4,6 +4,8 @@ import { Recicladoras } from '../interfaces/recicladoras.interface';
 import { AdministrarService } from '../servicios/administrar.service';
 import { RecicladorasComponent } from './recicladoras/recicladoras.component';
 import { Router } from '@angular/router';
+import { Preferences } from '@capacitor/preferences';
+import { SesionService } from '../servicios/sesion.service';
 
 @Component({
   selector: 'app-administrador',
@@ -26,7 +28,8 @@ export class AdministradorPage implements OnInit {
     private servicioRecicladoras: AdministrarService,
     private servicioToast: ToastController,
     private servicioAlert: AlertController,
-    private router: Router
+    private router: Router,
+    private servicioSesion: SesionService
   ) { }
 
   ngOnInit() {
@@ -127,7 +130,7 @@ export class AdministradorPage implements OnInit {
   }
 
   public cerrarSesion(){
-    localStorage.removeItem('token');
+    this.servicioSesion.eliminarToken();
     this.router.navigate(['/login']);
   }
 

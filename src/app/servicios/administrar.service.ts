@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Material } from '../interfaces/material.interface';
 import { Recicladoras } from '../interfaces/recicladoras.interface';
+import { Preferences } from '@capacitor/preferences';
+import { Key } from 'protractor';
+import { SesionService } from './sesion.service';
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +15,8 @@ import { Recicladoras } from '../interfaces/recicladoras.interface';
     url: string = 'http://localhost:3000/administrar';
   
     constructor(
-      private http: HttpClient
+      private http: HttpClient,
+      private sesion: SesionService
     ) { }
   
     public get(): Observable<Recicladoras[]>{ 
@@ -24,7 +28,8 @@ import { Recicladoras } from '../interfaces/recicladoras.interface';
     }
   
     public put(recicladora: Recicladoras): Observable<any>{
-      return this. http.put(this.url, recicladora, {responseType: 'text', headers: this.obtenerCabeceras('application/json')});
+      
+      return this.http.put(this.url, recicladora, {responseType: 'text', headers: this.obtenerCabeceras('application/json')});
     }
   
     public delete(recicladora: Recicladoras): Observable<any>{
@@ -33,9 +38,8 @@ import { Recicladoras } from '../interfaces/recicladoras.interface';
 
     private obtenerCabeceras(contentType?: string): HttpHeaders{
       let cabeceras: HttpHeaders = new HttpHeaders();
-      if(contentType) cabeceras = cabeceras.append('Content-Type', contentType);
-      const token: string | null = localStorage.getItem('token');
-      if(token) cabeceras = cabeceras.append('Authorization', `Bearer ${token}`);
+      if(contentType) cabeceras = cabeceras.append('Content-Type', contentType);   
+      if(this.sesion.getToken()) cabeceras = cabeceras.append('Authorization', `Bearer ${this.sesion.getToken()}`);
       return cabeceras;
     }
   

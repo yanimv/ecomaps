@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ToastController, IonRefresher } from '@ionic/angular';
+import { ToastController, IonRefresher, ViewWillEnter } from '@ionic/angular';
 import { SesionService } from '../servicios/sesion.service';
 import { Credenciales } from './../interfaces/credenciales.interface'
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, ViewWillEnter {
 
   @ViewChild(IonRefresher) refresher!: IonRefresher;
 
@@ -23,13 +23,13 @@ export class LoginPage implements OnInit {
   constructor(
     private servicioSesion: SesionService,
     private servicioToast: ToastController,
-    private router: Router
+    private router: Router,
+    private sesion: SesionService
   ) { 
     
   }
-
-  ngOnInit(): void {
-    const token: string | null = localStorage.getItem('token');
+  ionViewWillEnter(): void {
+    const token: string | null = this.sesion.getToken();
     if(token){
       const jwt: JwtHelperService = new JwtHelperService();
       if(!jwt.isTokenExpired(token)){
@@ -37,6 +37,10 @@ export class LoginPage implements OnInit {
       }
     }
     this.recargarLogin();
+  }
+
+  ngOnInit(): void {
+    
   }
 
   public recargarLogin(){

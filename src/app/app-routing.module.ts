@@ -13,10 +13,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'galeria',
-    loadChildren: () => import('./galeria/galeria.module').then( m => m.GaleriaPageModule)
-  },
-  {
     path: 'denuncias',
     loadChildren: () => import('./denuncias/denuncias.module').then( m => m.DenunciasPageModule)
   },
