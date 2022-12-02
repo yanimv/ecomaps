@@ -11,25 +11,30 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content id="container" [fullscreen]="true" class="ion-padding" >
   <ion-refresher slot="fixed" (ionRefresh)="recargarLogin()">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+  <h5>Sólo los Administradores pueden ingresar a esta página.</h5>
   <form [formGroup]="form">
-        <ion-item class="item-espaciado">
+        <ion-item class="ion-padding">
           <ion-label position="floating">Nro. Documento</ion-label>
           <ion-input inputmode="number" formControlName="ci"  [clearInput]="true"></ion-input>
           <ion-note slot="error" *ngIf="form.get('ci').invalid && form.get('ci').dirty">Ingrese el nro. de documento.</ion-note>
         </ion-item>
-        <ion-item class="item-espaciado">
+        <ion-item class="ion-padding">
           <ion-label position="floating">Password</ion-label>
           <ion-input type="password" formControlName="password"  [clearInput]="true"></ion-input>
           <ion-note slot="error" *ngIf="form.get('password').invalid && form.get('password').dirty">Ingrese la contraseña.</ion-note>
         </ion-item>
-        <ion-button expand="full" shape="round" (click)="iniciarSesion()">
+        <ion-button class="ion-padding" expand="full" shape="round" (click)="iniciarSesion()">
           <ion-icon name="save" slot="start"></ion-icon>
           Login
         </ion-button>   
+        <ion-button class="ion-padding" expand="full" shape="round" type="reset">
+          <ion-icon name="refresh-outline" slot="start"></ion-icon>
+          Reset
+        </ion-button> 
   </form>
   
 </ion-content>

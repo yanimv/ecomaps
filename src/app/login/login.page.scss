@@ -1,15 +1,10 @@
-.tarjeta-login{
-    width: 480px;
-}
-
-.centrado{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .item-espaciado{
     margin-top: 15px;
     margin-bottom: 15px;
-  }
+}
+#container{
+    --background: #8ae2cc;
+}
+ion-item{
+  --border-radius: 10px 10px;
+}

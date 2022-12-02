@@ -23,10 +23,10 @@
         <ion-label>{{ material.material }}</ion-label>
       </ion-item>
     </ion-list>
-  <div id="boton-ionic">
-    <ion-button *ngIf="mostrarBoton" (click)="mostrar()">Mostrar</ion-button>
-    <ion-button *ngIf="mostrarBoton" (click)="resetear()" type="reset">Cancelar</ion-button>
-  </div>
+  
+    <ion-button color="warning" *ngIf="mostrarBoton" (click)="mostrar()">Mostrar</ion-button>
+    <ion-button color="warning" *ngIf="mostrarBoton" (click)="resetear()" type="reset">Cancelar</ion-button>
+
   </div>
 
 </ion-content>

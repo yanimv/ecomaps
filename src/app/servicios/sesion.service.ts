@@ -21,7 +21,6 @@ export class SesionService {
     private http: HttpClient
   ) { 
     Preferences.get({key: 'token'}).then(pref =>{
-      console.log("token leido de preferences", pref.value)
       this.token = pref.value;
       if(this.token){
         this.procesarToken(this.token)

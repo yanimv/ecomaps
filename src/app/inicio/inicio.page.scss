@@ -5,44 +5,33 @@
   #container strong {
     font-size: 25px;
     line-height: 36px;
-    color: white;
-    //text-shadow: 2px 2px 2px rgb(24, 23, 23);
+    color: black;
   }
   
   #container p {
     font-size: 30px;
-    line-height: 22px;
-  
-    color: #8c8c8c;
-  
+    line-height: 22px;  
+    color: #8c8c8c;  
     margin: 0;
   }
   
   #container a {
-    text-decoration: none;
     text-decoration:line-through;
     font-size:x-large;
   }
 ion-checkbox {
-    --size: 20px;
-    --background-checked:orange;
+  --size: 20px;
+  --background-checked: orange;
   }
   
 ion-checkbox::part(container) {
     border-radius: 6px;
-    border: 2px solid orchid;
+    border: 3px solid orange;
+    size:70%;
 }
-#boton-ionic{
-  text-align:center;
-}
-ion-button{
-  --background:orchid;
-  --color: black;
-  
-}
+
 ion-content {
-  --background:#8ae2cc;
-  --color: orchid;
+  --background: #8ae2cc;
   
 }
 /*ion-toolbar{
@@ -50,10 +39,24 @@ ion-content {
   --border-color:rgb(255, 0, 0);
   --color: white;
   --font-family:
+}*/
+
+ion-item{
+  --background: clear;
+  background: rgba(38, 9, 119, 0.493);
+  border-radius: 40px 10px;
+  --border-radius: 40px 10px;
+  color: white;
+  font-size: 22px;;
+  padding: 10px 25px 10px  25px;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;   
 }
 ion-list{
-  --background:#8ae2cc;
+  background-color: #8ae2cc;
 }
-ion-item{
-  --background:#8ae2cc;
-}*/
+
+ion-item-background{
+  background-color: #8ae2cc;
+}

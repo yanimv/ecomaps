@@ -11,13 +11,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding" style="text-align: justify;">
+<ion-content id="container" [fullscreen]="true" class="ion-padding" style="text-align: justify;">
 
   <ion-refresher slot="fixed" (ionRefresh)="cargarRecicladoras()">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
   <p>Estas son las Recicladoras con las que cuenta ECOMAPS.</p>
+  <p>Si conoce de otras recicladoras en la ciudad puede 
+    enviar sus datos a través del formulario.</p>
 
   <ion-list>
 
@@ -41,10 +43,6 @@
     </ion-item>
   
   </ion-list>
-
-  <p>Si conoce de otras recicladoras en<br>
-     la ciudad puede enviar sus datos<br>
-     a través del formulario.</p>
 
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button (click)="nuevo()">
