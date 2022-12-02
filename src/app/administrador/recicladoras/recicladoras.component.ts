@@ -30,7 +30,7 @@ export class RecicladorasComponent implements OnInit {
     calleCtrl: new FormControl<string>(null, [Validators.required]),
     gpsCtrl: new FormControl<string>(null, [Validators.required]),
     estadoCtrl: new FormControl<string>(null, [Validators.required]),
-    materialesCtrl: new FormControl<string>(null, [Validators.required])
+    materialesCtrl: new FormControl<number[]>(null, [Validators.required])
   });
 
   constructor(
@@ -71,6 +71,11 @@ export class RecicladorasComponent implements OnInit {
   }
 
   private registrar(){
+    const materialesEnvio: Material[] = [];
+    this.form.controls.materialesCtrl.value.forEach(id => {
+      materialesEnvio.push({idmaterial: id, material: null});
+    })
+
     const recicladora: Recicladoras = {
       idrecicladora: null,
       nombre_rec: this.form.controls.nombreCtrl.value,
@@ -81,7 +86,7 @@ export class RecicladorasComponent implements OnInit {
       calle: this.form.controls.calleCtrl.value,
       gps: this.form.controls.gpsCtrl.value,
       estado: this.form.controls.estadoCtrl.value,
-      materiales: this.form.controls.materialesCtrl.value
+      materiales: materialesEnvio
     }
     this.servicioRecicladora.post(recicladora).subscribe({
       next: () => {
