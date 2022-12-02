@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DetalleMaterial } from '../interfaces/detalleMaterial.interface';
+import { ApiUtil } from './api-util';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DetalleMaterialService {
 
-  url: string = 'http://localhost:3000/detalleMaterial';
+  url: string = `http://${ApiUtil.IP}:3000/detalleMaterial`;
 
   constructor(
     private http: HttpClient

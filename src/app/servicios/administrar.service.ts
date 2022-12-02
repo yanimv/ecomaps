@@ -6,13 +6,14 @@ import { Recicladoras } from '../interfaces/recicladoras.interface';
 import { Preferences } from '@capacitor/preferences';
 import { Key } from 'protractor';
 import { SesionService } from './sesion.service';
+import { ApiUtil } from './api-util';
 
 @Injectable({
     providedIn: 'root'
   })
   export class AdministrarService {
   
-    url: string = 'http://localhost:3000/administrar';
+    url: string = `http://${ApiUtil.IP}:3000/administrar`;
   
     constructor(
       private http: HttpClient,

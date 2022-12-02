@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Material } from '../interfaces/material.interface';
+import { ApiUtil } from './api-util';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Material } from '../interfaces/material.interface';
 })
 export class MaterialService {
 
-  url: string = "http://localhost:3000/material";
+  url: string = `http://${ApiUtil.IP}:3000/material`;
 
   constructor(
     private http: HttpClient

@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Recicladoras } from '../interfaces/recicladoras.interface';
+import { ApiUtil } from './api-util';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListarecicladorasService {
 
-  url: string = 'http://localhost:3000/listarecicladoras';
+  url: string = `http://${ApiUtil.IP}:3000/listarecicladoras`;
 
   constructor(
     private http: HttpClient
