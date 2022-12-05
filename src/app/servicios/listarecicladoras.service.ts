@@ -2,33 +2,32 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Recicladoras } from '../interfaces/recicladoras.interface';
-import { ApiUtil } from './api-util';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListarecicladorasService {
 
-  url: string = `http://${ApiUtil.IP}:3000/listarecicladoras`;
-
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private servicioAPI: ApiService
   ) { }
 
   public get(): Observable<Recicladoras[]>{
-    return this.http.get<Recicladoras[]>(this.url);
+    return this.http.get<Recicladoras[]>(this.servicioAPI.getURLlistarecicladoras());
   }
 
   public post(recicladora: Recicladoras): Observable<any>{
-    return this.http.post(this.url, recicladora, {responseType: 'text'});
+    return this.http.post(this.servicioAPI.getURLlistarecicladoras(), recicladora, {responseType: 'text'});
   }
 
   public put(recicladora: Recicladoras): Observable<any>{
-    return this. http.put(this.url, recicladora, {responseType: 'text'});
+    return this. http.put(this.servicioAPI.getURLlistarecicladoras(), recicladora, {responseType: 'text'});
   }
 
   public delete(recicladora: Recicladoras): Observable<any>{
-    return this.http.delete(`${this.url}/${recicladora.idrecicladora}`, {responseType: 'text'});
+    return this.http.delete(`${this.servicioAPI.getURLlistarecicladoras()}/${recicladora.idrecicladora}`, {responseType: 'text'});
   }
 
 }

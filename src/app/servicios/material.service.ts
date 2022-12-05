@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Material } from '../interfaces/material.interface';
-import { ApiUtil } from './api-util';
+import { ApiService } from './api.service';
 
 
 @Injectable({
@@ -10,14 +10,13 @@ import { ApiUtil } from './api-util';
 })
 export class MaterialService {
 
-  url: string = `http://${ApiUtil.IP}:3000/material`;
-
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private servicioAPI: ApiService
   ) { }
 
   public get(): Observable<Material[]>{
-    return this.http.get<Material[]>(this.url);
+    return this.http.get<Material[]>(this.servicioAPI.getURLmaterial());
   }
 
 }

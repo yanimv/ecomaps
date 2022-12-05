@@ -1,40 +1,38 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Material } from '../interfaces/material.interface';
 import { Recicladoras } from '../interfaces/recicladoras.interface';
 import { Preferences } from '@capacitor/preferences';
 import { Key } from 'protractor';
 import { SesionService } from './sesion.service';
-import { ApiUtil } from './api-util';
+import { ApiService } from './api.service';
 
 @Injectable({
     providedIn: 'root'
   })
   export class AdministrarService {
   
-    url: string = `http://${ApiUtil.IP}:3000/administrar`;
-  
     constructor(
       private http: HttpClient,
-      private sesion: SesionService
+      private sesion: SesionService,
+      private servicioAPI: ApiService
     ) { }
   
     public get(): Observable<Recicladoras[]>{ 
-      return this.http.get<Recicladoras[]>(this.url, {headers: this.obtenerCabeceras()});
+      return this.http.get<Recicladoras[]>(this.servicioAPI.getURLadministrar(), {headers: this.obtenerCabeceras()});
     }
   
     public post(recicladora: Recicladoras): Observable<any>{
-      return this.http.post(this.url, recicladora, {responseType: 'text', headers: this.obtenerCabeceras('application/json')});
+      return this.http.post(this.servicioAPI.getURLadministrar(), recicladora, {responseType: 'text', headers: this.obtenerCabeceras('application/json')});
     }
   
     public put(recicladora: Recicladoras): Observable<any>{
       
-      return this.http.put(this.url, recicladora, {responseType: 'text', headers: this.obtenerCabeceras('application/json')});
+      return this.http.put(this.servicioAPI.getURLadministrar(), recicladora, {responseType: 'text', headers: this.obtenerCabeceras('application/json')});
     }
   
     public delete(recicladora: Recicladoras): Observable<any>{
-      return this.http.delete(`${this.url}/${recicladora.idrecicladora}`, {responseType: 'text', headers: this.obtenerCabeceras('application/json')});
+      return this.http.delete(`${this.servicioAPI.getURLadministrar()}/${recicladora.idrecicladora}`, {responseType: 'text', headers: this.obtenerCabeceras('application/json')});
     }
 
     private obtenerCabeceras(contentType?: string): HttpHeaders{

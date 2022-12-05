@@ -2,21 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Comentarios } from '../interfaces/comentarios.interface';
-import { ApiUtil } from './api-util';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComentariosService {
 
-  url: string = `http://${ApiUtil.IP}:3000/comentarios`;
-
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private servicioAPI: ApiService
   ) { }
 
   post(comentarios: Comentarios): Observable<any> {
-    return this.http.post(this.url, comentarios, { responseType: "text" });
+    return this.http.post(this.servicioAPI.getURLcomentarios(), comentarios, { responseType: "text" });
 }
 
 }

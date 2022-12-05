@@ -6,19 +6,19 @@ import { Credenciales } from '../interfaces/credenciales.interface';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Preferences } from '@capacitor/preferences';
 import { Key } from 'protractor';
-import { ApiUtil } from './api-util';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SesionService {
 
-  private url: string = `http://${ApiUtil.IP}:3000/sesion`;
   private timer: any;
   private token: string | null = null;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private servicioAPI: ApiService
   ) { 
     Preferences.get({key: 'token'}).then(pref =>{
       this.token = pref.value;
@@ -40,7 +40,7 @@ export class SesionService {
   }
 
   public iniciar(cred: Credenciales): Observable<{token:string}>{
-    return this.http.post<{token: string}>(`${this.url}/iniciar`, cred).pipe(
+    return this.http.post<{token: string}>(`${this.servicioAPI.getURLsesion()}/iniciar`, cred).pipe(
       tap(resp => {
         Preferences.set({key: 'token', value: resp.token})
         this.procesarToken(resp.token);
@@ -50,7 +50,7 @@ export class SesionService {
   }
 
   private mantener(): Observable<{token: string}>{
-    return this.http.post<{token: string}>(`${this.url}/mantener`, {token: this.token});
+    return this.http.post<{token: string}>(`${this.servicioAPI.getURLsesion()}/mantener`, {token: this.token});
   }
 
   private procesarToken(token: string){

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Ajustes</ion-title>
+  </ion-toolbar>
+</ion-header>
+  <form [formGroup]="form">
+    <ion-list class="ion-padding">
+      <ion-item fill="outline">
+        <ion-label position="floating">Dirección IP de la API</ion-label>
+        <ion-input formControlName="ipCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.ipCtrl.touched">Ingrese la IP o el dominio del sevidor</ion-note>
+      </ion-item>
+    </ion-list>
+  </form>
+  <ion-button expand="full" shape="round" class="ion-margin-start ion-margin-end" (click)="guardar()">
+    <ion-icon name="save" slot="start"></ion-icon>
+    Guardar
+  </ion-button>
+
+<ion-content>
+
+</ion-content>

@@ -3,25 +3,24 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Material } from '../interfaces/material.interface';
 import { Recicladoras } from '../interfaces/recicladoras.interface';
-import { ApiUtil } from './api-util';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecicladoraService {
 
-  url: string = `http://${ApiUtil.IP}:3000/recicladoras`;
-
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private servicioAPI: ApiService
   ) { }
 
   public get(): Observable<Recicladoras[]>{
-    return this.http.get<Recicladoras[]>(this.url);
+    return this.http.get<Recicladoras[]>(this.servicioAPI.getURLrecicladora());
   }
 
   public getMaterialesPorRecicladora(idrecicladora: number): Observable<Material[]>{
-    return this.http.get<Material[]>(this.url + '/' + idrecicladora + '/materiales');
+    return this.http.get<Material[]>(this.servicioAPI.getURLrecicladora() + '/' + idrecicladora + '/materiales');
   }
 
   public cargarPorMaterial(idmaterial: number[]): Observable<Recicladoras[]>{
@@ -29,7 +28,7 @@ export class RecicladoraService {
     idmaterial.forEach(id => {
       parametros = parametros.append('idmaterial', id.toString());
     })
-    return this.http.get<Recicladoras[]>(this.url, { params: parametros });
+    return this.http.get<Recicladoras[]>(this.servicioAPI.getURLrecicladora(), { params: parametros });
   }
 
 }
