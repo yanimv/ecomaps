@@ -3,47 +3,44 @@
     <ion-list>
       <ion-item fill="outline">
         <ion-label>ID:</ion-label>
-        <ion-input inputmode="number" placeholder="Ingresar..." formControlName="idrecicladoraCtrl"></ion-input>
-        <ion-note slot="error" *ngIf="form.controls.idrecicladoraCtrl.touched">Ingrese un código.</ion-note>
+        <ion-input inputmode="number" placeholder="1" formControlName="idrecicladoraCtrl"></ion-input>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Nombre:</ion-label>
-        <ion-input inputmode="text" placeholder="Ingresar..." formControlName="nombreCtrl"></ion-input>
+        <ion-input inputmode="text" placeholder="Recicladora ECOMAPS" formControlName="nombreCtrl"></ion-input>
         <ion-note slot="error" *ngIf="form.controls.nombreCtrl.touched">Ingrese el nombre de la recicladora.</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Telefono:</ion-label>
-        <ion-input inputmode="number" placeholder="Ingresar..." formControlName="telefonoCtrl"></ion-input>
-        <ion-note slot="error" *ngIf="form.controls.telefonoCtrl.touched">Ingrese un número de teléfono</ion-note>
+        <ion-input inputmode="tel" type="number" placeholder="0987654321" formControlName="telefonoCtrl"></ion-input>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>¿Ofrece remuneración?:</ion-label>
-        <ion-input inputmode="text" placeholder="Ingresar..." formControlName="pagaCtrl" ></ion-input>
+        <ion-input inputmode="text" placeholder="Sí o No" formControlName="pagaCtrl" ></ion-input>
         <ion-note slot="error" *ngIf="form.controls.pagaCtrl.touched">Escriba "Sí" o "No".</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Ciudad:</ion-label>
-        <ion-input inputmode="text" placeholder="Ingresar..." formControlName="ciudadCtrl" ></ion-input>
+        <ion-input inputmode="text" placeholder="Coronel Oviedo" formControlName="ciudadCtrl" ></ion-input>
         <ion-note slot="error" *ngIf="form.controls.ciudadCtrl.touched">Escriba una ciudad.</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Barrio:</ion-label>
-        <ion-input inputmode="text" formControlName="barrioCtrl"></ion-input>
+        <ion-input inputmode="text" placeholder="Barrio San Isidro" formControlName="barrioCtrl"></ion-input>
         <ion-note slot="error" *ngIf="form.controls.barrioCtrl.touched">Escriba un barrio.</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Calle:</ion-label>
-        <ion-input inputmode="text" formControlName="calleCtrl"></ion-input>
-        <ion-note slot="error" *ngIf="form.controls.calleCtrl.touched">Ingrese una calle. En caso de no saberlo escriba "No se sabe".</ion-note>
+        <ion-input inputmode="text" placeholder="Tuyutí" formControlName="calleCtrl"></ion-input>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Enlace GPS:</ion-label>
-        <ion-input inputmode="text" formControlName="gpsCtrl"></ion-input>
-        <ion-note slot="error" *ngIf="form.controls.gpsCtrl.touched">Ingrese el enlace de ubicación de Google Maps.  En caso de no poseer uno escriba "No posee".</ion-note>
+        <ion-input inputmode="url" pattern="https://.*" placeholder="https://." type="url" formControlName="gpsCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.gpsCtrl.touched">Ingrese el enlace de ubicación de Google Maps.</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Estado:</ion-label>
-        <ion-input inputmode="text" placeholder="Ingresar..." formControlName="estadoCtrl"></ion-input>
+        <ion-input inputmode="text" placeholder="Pendiente o Visible" formControlName="estadoCtrl"></ion-input>
         <ion-note slot="error" *ngIf="form.controls.estadoCtrl.touched">Escriba "Pendiente" o "Visible".</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
@@ -51,7 +48,7 @@
         <ion-select formControlName="materialesCtrl" placeholder="Seleccione..." [multiple]="true">
           <ion-select-option *ngFor="let material of listaMateriales" [value]="material.idmaterial">{{material.material}}</ion-select-option>
         </ion-select>
-        <ion-note slot="error" *ngIf="form.controls.materialesCtrl.touched">Seleccion un material.</ion-note>
+        <ion-note slot="error" *ngIf="form.controls.materialesCtrl.touched">Seleccione un material.</ion-note>
       </ion-item>
  
     <ion-button expand="full" shape="round" (click)="guardar()">

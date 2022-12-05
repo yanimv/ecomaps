@@ -6,39 +6,37 @@
     <ion-list>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Nombre:</ion-label>
-        <ion-input inputmode="text" formControlName="nombreCtrl"></ion-input>
+        <ion-input inputmode="text" placeholder="Recicladora ECOMAPS" formControlName="nombreCtrl"></ion-input>
         <ion-note slot="error" *ngIf="form.controls.nombreCtrl.touched">Ingrese el nombre de la recicladora.</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Ciudad:</ion-label>
-        <ion-select interface="popover" slot="end" formControlName="ciudadCtrl">
+        <ion-select interface="popover" slot="end" formControlName="ciudadCtrl" placeholder="Seleccione...">
           <ion-select-option value="si">Coronel Oviedo</ion-select-option>
         </ion-select>
         <ion-note slot="error" *ngIf="form.controls.ciudadCtrl.touched">Seleccione una opción.</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Barrio:</ion-label>
-        <ion-input inputmode="text" formControlName="barrioCtrl"></ion-input>
-        <ion-note slot="error" *ngIf="form.controls.barrioCtrl.touched">Ingrese el barrio en donde queda ubicada la recicladora.</ion-note>
+        <ion-input inputmode="text" placeholder="Barrio San Isidro" formControlName="barrioCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.barrioCtrl.touched">Ingrese el barrio en donde queda la recicladora.</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Calle:</ion-label>
-        <ion-input inputmode="text" formControlName="calleCtrl"></ion-input>
-        <ion-note slot="error" *ngIf="form.controls.calleCtrl.touched">Ingrese la calle en donde queda ubicada la recicladora.</ion-note>
+        <ion-input inputmode="text" placeholder="Tuyutí" formControlName="calleCtrl"></ion-input>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Enlace GPS:</ion-label>
-        <ion-input inputmode="text" formControlName="gpsCtrl"></ion-input>
-        <ion-note slot="error" *ngIf="form.controls.gpsCtrl.touched">Ingrese el enlace de ubicación de Google Maps.  En caso de no poseer uno escriba "No posee".</ion-note>
+        <ion-input inputmode="url" pattern="https://.*" placeholder="https://." type="url" formControlName="gpsCtrl"></ion-input>
+        <ion-note slot="error" *ngIf="form.controls.gpsCtrl.touched">Ingrese el enlace de ubicación de Google Maps.</ion-note>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>Teléfono:</ion-label>
-        <ion-input inputmode="number" formControlName="telefonoCtrl"></ion-input>
-        <ion-note slot="error" *ngIf="form.controls.telefonoCtrl.touched">Ingrese un número de teléfono. En caso de no poseer uno escriba "1111".</ion-note>
+        <ion-input inputmode="tel" type="number" placeholder="0987654321" formControlName="telefonoCtrl"></ion-input>
       </ion-item>
       <ion-item fill="outline" class="item-espaciado">
         <ion-label>¿Ofrece remuneración?:</ion-label>
-        <ion-select interface="popover" slot="end" formControlName="pagaCtrl">
+        <ion-select interface="popover" slot="end" placeholder="Seleccione..." formControlName="pagaCtrl">
           <ion-select-option value="si">Sí</ion-select-option>
           <ion-select-option value="no">No</ion-select-option>
         </ion-select>

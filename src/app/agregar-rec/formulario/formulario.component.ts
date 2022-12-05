@@ -19,9 +19,9 @@ export class FormularioComponent implements OnInit, ViewWillEnter {
     nombreCtrl: new FormControl<string>(null,[Validators.required]),
     ciudadCtrl: new FormControl<string>(null,[Validators.required]),
     barrioCtrl: new FormControl<string>(null,[Validators.required]),
-    calleCtrl: new FormControl<string>(null,[Validators.required]),
+    calleCtrl: new FormControl<string>(null),
     gpsCtrl: new FormControl<string>(null,[Validators.required]),
-    telefonoCtrl: new FormControl<number>(null,[Validators.required]),
+    telefonoCtrl: new FormControl<number>(null),
     pagaCtrl: new FormControl<string>(null,[Validators.required]),
     materialesCtrl: new FormControl<number[]>([], [Validators.required]),
   });
